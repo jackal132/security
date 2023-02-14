@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>SignUpPage</title>
+</head>
+<body>
+  <h1>SignUp Page</h1>
+  <hr>
+  <form th:action="@{/signUp}" method="post" th:object="${userDto}">
+    <div>
+      <input type="text" name="userId" placeholder="ID">
+    </div>
+    <div>
+      <input type="password" name="password" placeholder="PASSWORD">
+    </div>
+    <div>
+      <input type="text" name="name" placeholder="NAME">
+    </div>
+    <button type="submit">SignUp</button>
+    <button type="button" onclick="location.href='/home';">취소</button>
+  </form>
+</body>
+</html>

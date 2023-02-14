@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Spring Security LoginPage</title>
+</head>
+<body>
+  <h1>LoginPage</h1>
+  <div th:if="${param.error}">Invalid ID and Password.</div>
+  <div th:if="${param.logout}">You have been logged out.</div>
+  <form th:action="@{/login}" method="post">
+      <div><!-- CustomUserDetailsService loadUserByUsername 여기 접근하려면 "username" 으로 넘겨야함 -->
+        <label> ID : <input type="text" name="username"/></label>
+      </div>
+      <br>
+      <div>
+        <label> Password : <input type="password" name="password"/></label>
+      </div>
+      <br>
+      <div>
+        <input type="submit" value="Sign In">
+        <input type="button" onclick="location.href='/signUp';" value="Sign Up"/>
+      </div>
+  </form>
+</body>
+</html>

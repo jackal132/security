@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello</title>
+</head>
+<body>
+  <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+  <br>
+
+  <!-- SYSTEM 역할 -->
+  <h3 sec:authorize="hasRole('SYSTEM')">Has SYSTEM Role</h3>
+<!--  <h3 sec:authorize="hasRole(T(acc.security.user.enums.UserRole).SYSTEM">Has SYSTEM Role</h3>-->
+
+  <!-- USER 역할 -->
+  <h3 sec:authorize="hasRole('USER')">Has USER Role</h3>
+
+  <h3 sec:authorize="hasRole('BOARD')">Has BOARD Role</h3>
+
+  <!-- 역할에 상관없이 인증된 사람 -->
+  <h3 sec:authorize="isAuthenticated()">Only Authenticated user can see this Text</h3>
+
+  <div>
+      Authorities : <span sec:authentication="principal.authorities"></span>
+  </div>
+  <br>
+
+  <p> 시스템 관리자 페이지 <a th:href="@{/system}">SYSTEM</a></p>
+
+  <form th:action="@{/logout}" method="post">
+    <input type="submit" value="Logout">
+  </form>
+</body>
+</html>
